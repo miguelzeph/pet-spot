@@ -1,0 +1,7 @@
+Flask==2.2.5
+tensorflow==2.11.0
+matplotlib==3.5.3
+numpy==1.21.6
+tensorflow==2.11.0
+klein-config== 4.0.2
+

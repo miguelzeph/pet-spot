@@ -1,0 +1,9 @@
+# Virtual Env
+/env/
+# Cache
+*__pycache__/
+# Data Base
+/app/database.db
+
+# ML Model
+# /model/animals_EfficientNetB0.h5
