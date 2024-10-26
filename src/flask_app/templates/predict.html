@@ -1,24 +1,41 @@
 {% extends 'index.html' %}
-{% block title %} results {% endblock %}
+{% block title %} Pet-Spot Results {% endblock %}
+
 {% block predict %}
+<div class="py-5" style="background-color: rgb(212, 238, 253);">
+    <div class="container">
+        <div class="row">
+            <!-- Results Section (Left Column) -->
+            <div class="col-md-6">
+                <h1 class="display-5 mb-4 text-center">Prediction Results</h1>
+                <p class="lead text-secondary mb-4 text-center">Here are the odds for each possible classification:</p>
 
-    <div  style = 'background-color:rgb(212, 238, 253)'  class="p-5 rounded-3 meucss">
-        <div class="container">
-            
-            <p class = "display-4">Odds:</p>
+                <!-- Gráfico de Barras com Limite de Altura -->
+                <div style="max-width: 500px; margin: 0 auto;">
+                    <canvas id="resultsChart" width="400" height="300"></canvas>
+                </div>
+            </div>
 
-            <div class = 'row text-center'>
-                {% for result in results %}
-                    <div class = 'col card mb-4 shadow-sm'>
-
-                    <p class = 'lead'> 
-                        <b>{{ result }}</b>
-                    <p>
-                        {{ results[result] }}% 
-                    </div>
-                {% endfor %}
+            <!-- Display Uploaded Image (Right Column) -->
+            <div class="col-md-6 text-center">
+                {% if image %}
+                <div class="mt-4">
+                    <h5 class="mb-3">Your Uploaded Image:</h5>
+                    <img src="{{ image }}" class="img-thumbnail" alt="Uploaded Pet Image" style="height: 200px; width: 220px;">
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>
+</div>
+
+<!-- Execute Chart.js function with results from Flask as parameter -->
+<script>
+    // Dados de `results` passados do backend para o JavaScript
+    const resultsData = {{ results | tojson }};
+
+    // Chama a função para criar o gráfico de resultados
+    createResultsChart(resultsData);
+</script>
 
 {% endblock %}

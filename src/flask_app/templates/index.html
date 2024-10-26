@@ -1,32 +1,32 @@
 {% extends 'base.html' %}
-{% block title %} index page {% endblock %}
+{% block title %} Pet-Spot - Discover Your Pet {% endblock %}
+
 {% block index %}
-<div class="p-5 bg-light rounded-3 meucss">
-    <div class="container">
-        <p class="display-4">Do you want to discovery what kinda pet do you have? </p>
-        <p class="lead">Select a picture</p>
+<div class="py-5 bg-light">
+    <div class="container text-center">
+        <!-- Title and Intro Section -->
+        <h1 class="display-4 mb-4">Welcome to Pet-Spot</h1>
+        <p class="lead text-secondary mb-4">
+            Pet-Spot is a cutting-edge application that uses Machine Learning to identify and classify your pet. 
+            Just upload a picture, and let our intelligent model do the work!
+        </p>
 
-        <form action="{{ url_for('flask_app.upload') }}" enctype="multipart/form-data" method="POST">
-            <input type="file" name="file" class="btn btn-primary  btn-block" />
-            <input type="submit" value="Upload a file" class="btn btn-secondary btn-block" />
+        <!-- Upload Form Section -->
+        <div class="card shadow-sm p-4 mb-5 bg-white rounded">
+            <h3 class="card-title mb-3">Upload a Picture of Your Pet</h3>
+            <p class="card-text">Curious to know what kind of pet you have? Let’s find out!</p>
+            <form action="{{ url_for('flask_app.upload') }}" enctype="multipart/form-data" method="POST">
+                <div class="mb-3">
+                    <input type="file" name="file" class="form-control" aria-label="File Upload">
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg px-4">Upload Picture</button>
+            </form>
+        </div>
 
-            
-                {% if image != 'nothing'%}
-                    <img src = '{{image}}' style = 'height:150px; width:180px;'>
-                    <!-- Teste
-                    <img src = '/static/upload/download_1.jpeg' style = 'height:150px; width:180px;'>
-                    -->
-                {% endif %}
-            
-        </form>
-        
+        <!-- Block Results -->
+        {% block predict %}
+        <!-- Prediction Results will be displayed here if available -->
+        {% endblock %}
     </div>
 </div>
-
-{% block predict %}
-<!-- PREDICT.HTML-->
 {% endblock %}
-
-{% endblock %}
-
-

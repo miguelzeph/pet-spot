@@ -9,7 +9,7 @@ flask_app = Blueprint(name="flask_app", import_name=__name__)
 @flask_app.route( '/', methods=["GET", "POST"] )
 def index( ):
     
-    image = 'nothing'
+    image = None
 
     return render_template( 'index.html', image = image )
 
