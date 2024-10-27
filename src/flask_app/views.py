@@ -1,4 +1,4 @@
-from model.functions import pred
+from model.functions import predict_animal_species
 from flask import Blueprint, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
 import os
@@ -32,7 +32,7 @@ def upload():
 
 @flask_app.route('/predict/<filename>', methods = ['GET'] )
 def predict( filename ):
-    results = pred( str(filename) )
+    results = predict_animal_species( str(filename) )
     results = {key: round(value * 100, 2) for key, value in results.items()}
     #print(results)
 

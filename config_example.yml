@@ -1,0 +1,12 @@
+flask:
+  upload_folder: ./flask_app/static/upload
+  secret_key: mysecretkey
+  session_type: filesystem
+  debug: 0
+  api_host: 0.0.0.0
+  api_port: 5000
+
+tensorflow:
+  cuda_visible_devices: "-1"
+  tf_cpp_min_log_level: "3"
+  model_path: ./model/animals_EfficientNetB0.tflite

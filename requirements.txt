@@ -4,4 +4,4 @@ matplotlib==3.5.3
 numpy==1.21.6
 tensorflow==2.11.0
 klein-config== 4.0.2
-
+gunicorn==23.0.0

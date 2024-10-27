@@ -12,7 +12,7 @@ FLASK_DEBUG = config.get("flask.debug")
 # Constants TensorFlow
 CUDA_VISIBLE_DEVICES = config.get("tensorflow.cuda_visible_devices")
 MODEL_PATH = config.get("tensorflow.model_path")
-
+TF_CPP_MIN_LOG_LEVEL = config.get("tensorflow.tf_cpp_min_log_level")
 
 def config_flask(app):
     """Setup Flask environment variables
@@ -29,3 +29,4 @@ def config_flask(app):
 def config_tensorflow():
     os.environ["CUDA_VISIBLE_DEVICES"] = str(CUDA_VISIBLE_DEVICES)
     os.environ["MODEL_PATH"] = MODEL_PATH
+    os.environ["TF_CPP_MIN_LOG_LEVEL"] = str(TF_CPP_MIN_LOG_LEVEL)
